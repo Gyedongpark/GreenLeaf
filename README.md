@@ -1,1 +1,1 @@
-![profile_gl](https://github.com/Gyedongpark/GreenLeaf/assets/125779032/bb997359-3353-45ef-bcc5-49ad7b2032cc)
+![profile_gl](https://github.com/Gyedongpark/GreenLeaf/assets/125779032/0cce58fe-baee-4a93-a209-0ee8ab7f82d1)
