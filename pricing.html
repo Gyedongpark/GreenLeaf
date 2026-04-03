@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta property="og:title" content="상담 비용 안내 — 그린리프 휴먼컨설팅"/>
+  <meta property="og:description" content="사주상담 · 궁합상담 비용 안내"/>
+  <title>상담 비용 안내 — 그린리프 휴먼컨설팅</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --green: #5a9e3a;
+      --green-light: #7fc700;
+      --green-dark: #3d6e27;
+      --green-pale: #eef6e8;
+      --cream: #fafaf7;
+      --text: #1e2a14;
+      --text-sub: #556348;
+      --gold: #c8a84b;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--cream);
+      font-family: 'Noto Sans KR', sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(127,199,0,0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* 뒤로가기 버튼 */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-sub);
+      text-decoration: none;
+      margin-bottom: 20px;
+      padding: 7px 14px;
+      border-radius: 100px;
+      background: white;
+      border: 1px solid rgba(90,158,58,0.25);
+      transition: all 0.2s ease;
+      font-weight: 500;
+    }
+    .back-btn:hover {
+      background: var(--green-pale);
+      border-color: var(--green);
+      color: var(--green-dark);
+    }
+
+    /* 브랜드 태그 */
+    .brand-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green-pale);
+      border: 1px solid rgba(90,158,58,0.3);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 12px;
+      color: var(--green-dark);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      margin-bottom: 24px;
+    }
+    .brand-tag::before {
+      content: '';
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--green-light);
+    }
+
+    /* 페이지 타이틀 */
+    .page-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 26px; font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+    }
+    .page-sub {
+      font-size: 13.5px;
+      color: var(--text-sub);
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    /* 상담 카테고리 카드 */
+    .consult-card {
+      background: white;
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 2px 20px rgba(30,42,20,0.06);
+      margin-bottom: 16px;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .card-label {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 17px; font-weight: 700;
+      color: var(--text);
+    }
+    .card-badge {
+      font-size: 11px;
+      background: var(--green-pale);
+      color: var(--green-dark);
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-weight: 600;
+    }
+
+    /* 가격 행 */
+    .price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(90,158,58,0.1);
+    }
+    .price-row:last-of-type { border-bottom: none; padding-bottom: 0; }
+    .price-row:first-of-type { padding-top: 0; }
+
+    .price-type {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14.5px;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .price-type::before {
+      content: '✦';
+      color: var(--green-light);
+      font-size: 10px;
+    }
+    .price-amount {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+    .price-amount span {
+      font-size: 13px;
+      font-family: 'Noto Sans KR', sans-serif;
+      color: var(--text-sub);
+      font-weight: 400;
+    }
+
+    /* 궁합 카드 특별 처리 */
+    .price-amount.discount-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 2px;
+    }
+    .price-original {
+      font-size: 13px;
+      color: #aaa;
+      text-decoration: line-through;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 400;
+    }
+    .price-discounted {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+    .price-discounted span {
+      font-size: 13px;
+      font-family: 'Noto Sans KR', sans-serif;
+      color: var(--text-sub);
+      font-weight: 400;
+    }
+
+    /* 주석 */
+    .footnote-wrap {
+      background: var(--green-pale);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+    }
+    .footnote {
+      font-size: 12.5px;
+      color: var(--text-sub);
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    .footnote + .footnote { margin-top: 6px; }
+
+    /* CTA 버튼 */
+    .btn {
+      display: flex; align-items: center;
+      justify-content: center; gap: 8px;
+      width: 100%; padding: 16px;
+      border-radius: 14px; font-size: 15px;
+      font-weight: 600; text-decoration: none;
+      transition: all 0.25s ease; margin-bottom: 10px;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green), var(--green-light));
+      color: white;
+      box-shadow: 0 4px 20px rgba(90,158,58,0.35);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(90,158,58,0.45);
+    }
+    .btn-kakao { background: #FEE500; color: #191919; }
+    .btn-kakao:hover { background: #fdd800; transform: translateY(-2px); }
+
+    .cta-card {
+      background: white;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 2px 20px rgba(30,42,20,0.06);
+      margin-bottom: 16px;
+    }
+    .cta-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 14px; font-weight: 600;
+      color: var(--text); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .cta-title span { color: var(--green-light); }
+
+    /* 푸터 */
+    .footer {
+      text-align: center; margin-top: 40px;
+      font-size: 12px; color: #aab8a2;
+    }
+
+    /* 애니메이션 */
+    .fade-up {
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+    .fade-up:nth-child(1) { animation-delay: 0.05s; }
+    .fade-up:nth-child(2) { animation-delay: 0.10s; }
+    .fade-up:nth-child(3) { animation-delay: 0.15s; }
+    .fade-up:nth-child(4) { animation-delay: 0.20s; }
+    .fade-up:nth-child(5) { animation-delay: 0.25s; }
+    .fade-up:nth-child(6) { animation-delay: 0.30s; }
+    .fade-up:nth-child(7) { animation-delay: 0.35s; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <a href="index.html" class="back-btn">← 홈으로</a>
+  <div class="brand-tag">그린리프 휴먼컨설팅</div>
+
+  <h1 class="page-title">상담 비용 안내</h1>
+  <p class="page-sub">자평명리학을 기반으로 인생의 흐름과<br/>현재의 고민을 함께 살펴봅니다.</p>
+
+  <!-- 사주 상담 -->
+  <div class="consult-card fade-up">
+    <div class="card-header">
+      <span class="card-label">사주 상담</span>
+      <span class="card-badge">소요 1시간 이상</span>
+    </div>
+    <div class="price-row">
+      <span class="price-type">오프라인 대면 상담</span>
+      <div class="price-amount">70,000<span>원</span></div>
+    </div>
+    <div class="price-row">
+      <span class="price-type">화상 / 전화 상담</span>
+      <div class="price-amount">50,000<span>원</span></div>
+    </div>
+  </div>
+
+  <!-- 궁합 상담 -->
+  <div class="consult-card fade-up">
+    <div class="card-header">
+      <span class="card-label">궁합 상담</span>
+    </div>
+    <div class="price-row">
+      <span class="price-type">궁합 상담</span>
+      <div class="price-amount discount-wrap">
+        <span class="price-original">140,000원</span>
+        <span class="price-discounted">100,000<span>원</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 주석 -->
+  <div class="footnote-wrap fade-up">
+    <p class="footnote">✦ 사주 상담은 자평 명리학을 기반으로 전반적인 인생의 운, 현재의 고민 등 원하시는 주제로 진행합니다.</p>
+    <p class="footnote">✦ 화상 상담은 구글 밋(Google Meet)으로 진행합니다.</p>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-card fade-up">
+    <p class="cta-title"><span>✦</span> 상담 예약</p>
+    <a class="btn btn-primary" href="https://smore.im/form/v77WpQvLAc" target="_blank">📋 상담 신청 · 고객정보 작성</a>
+    <a class="btn btn-kakao" href="http://pf.kakao.com/_pdjrxj" target="_blank">💬 카카오 채널 문의</a>
+  </div>
+
+</div>
+<div class="footer">© 2025 그린리프 휴먼컨설팅</div>
+</body>
+</html>
